@@ -15,5 +15,9 @@ public class PuzzleDomain {
         return puzzleInput.getElves().stream().max(Comparator.comparing(Elf::getCalories));
     }
 
+    public int getMostCalories() {
+        return getElfWithMostCalories().map(Elf::getCalories).orElse(0);
+    }
+
 
 }
