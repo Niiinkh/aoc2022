@@ -26,6 +26,11 @@ public class ExampleInputTest {
         assertThat(puzzleDomain.getMostCalories()).isEqualTo(24000);
     }
 
+    @Test
+    void exampleInput_part2() {
+        assertThat(puzzleDomain.getMostCaloriesFromTop3Elves()).isEqualTo(45000);
+    }
+
 
     class ExamplePuzzleInput implements PuzzleInputPort {
 

@@ -24,14 +24,14 @@ class PuzzleDomainTest {
     @Test
     void elfWithMostCalories_emptyList() {
         elves = Collections.emptyList();
-        assertThat(domain.getElfWithMostCalories()).isEmpty();
+        assertThat(domain.getElvesSortedByMostCalories()).isEmpty();
     }
 
     @Test
     void elfWithMostCalories_oneElf() {
         Elf elf = new Elf();
         elves = Arrays.asList(elf);
-        assertThat(domain.getElfWithMostCalories()).get().isEqualTo(elf);
+        assertThat(domain.getElvesSortedByMostCalories()).containsExactly(elf);
     }
 
     @Test
@@ -43,9 +43,9 @@ class PuzzleDomainTest {
 
         elf1.addFood(27);
         elf2.addFood(28);
-        elf1.addFood(0);
+        elf3.addFood(0);
 
-        assertThat(domain.getElfWithMostCalories()).get().isEqualTo(elf2);
+        assertThat(domain.getElvesSortedByMostCalories()).containsExactly(elf2, elf1, elf3);
     }
 
     class FakePuzzleInport implements PuzzleInputPort {
