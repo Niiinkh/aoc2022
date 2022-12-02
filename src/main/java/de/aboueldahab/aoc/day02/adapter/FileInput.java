@@ -8,15 +8,21 @@ import java.util.List;
 
 public class FileInput implements PuzzleInput {
 
-    private AocFileReader fileReader;
+    private final RockPaperScissorParser parser;
+    private List<String> input;
 
     public FileInput() {
-        this.fileReader = new AocFileReader();
+        input = new AocFileReader().readInput("input_day02.txt");
+        parser = new RockPaperScissorParser();
     }
 
     @Override
-    public List<GameRound> getInput() {
-        List<String> input = fileReader.readInput("input_day02.txt");
-        return new RockPaperScissorParser().convert(input);
+    public List<GameRound> getInputForPart1() {
+        return parser.convertPart1(input);
+    }
+
+    @Override
+    public List<GameRound> getInputForPart2() {
+        return parser.convertPart2(input);
     }
 }

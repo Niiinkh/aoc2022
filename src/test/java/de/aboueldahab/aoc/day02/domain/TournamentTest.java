@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,7 +15,7 @@ class TournamentTest {
     @BeforeEach
     void setup() {
         rounds = new ArrayList<>();
-        tournament = new Tournament(new FakePuzzleInput());
+        tournament = new Tournament(rounds);
     }
 
     @Test
@@ -29,14 +28,6 @@ class TournamentTest {
         rounds.add(new GameRound(HandShape.ROCK, HandShape.ROCK)); // 4 points
         rounds.add(new GameRound(HandShape.ROCK, HandShape.ROCK)); // 4 points
         assertThat(tournament.getTotalScore()).isEqualTo(8);
-    }
-
-    class FakePuzzleInput implements PuzzleInput {
-
-        @Override
-        public List<GameRound> getInput() {
-            return rounds;
-        }
     }
 
 }

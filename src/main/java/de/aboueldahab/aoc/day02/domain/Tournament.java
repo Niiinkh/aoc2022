@@ -6,8 +6,8 @@ public class Tournament {
 
     private final List<GameRound> rounds;
 
-    public Tournament(PuzzleInput input) {
-        this.rounds = input.getInput();
+    public Tournament(List<GameRound> rounds) {
+        this.rounds = rounds;
     }
 
     public int getTotalScore() {
