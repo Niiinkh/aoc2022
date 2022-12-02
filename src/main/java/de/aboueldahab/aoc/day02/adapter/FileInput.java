@@ -10,8 +10,8 @@ public class FileInput implements PuzzleInput {
 
     private AocFileReader fileReader;
 
-    public FileInput(AocFileReader fileReader) {
-        this.fileReader = fileReader;
+    public FileInput() {
+        this.fileReader = new AocFileReader();
     }
 
     @Override
