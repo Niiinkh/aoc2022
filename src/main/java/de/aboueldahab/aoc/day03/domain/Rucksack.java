@@ -1,5 +1,7 @@
 package de.aboueldahab.aoc.day03.domain;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Rucksack {
 
     private final String firstCompartment;
@@ -20,5 +22,14 @@ public class Rucksack {
 
     public String getSecondCompartment() {
         return secondCompartment;
+    }
+
+    public char getWrongItem() {
+        for (char character : firstCompartment.toCharArray()) {
+            if (StringUtils.containsAny(secondCompartment, character)) {
+                return character;
+            }
+        }
+        throw new IllegalStateException("There must be exactly one wrong element in each rucksack");
     }
 }

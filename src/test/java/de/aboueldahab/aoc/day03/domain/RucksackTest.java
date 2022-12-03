@@ -28,4 +28,17 @@ class RucksackTest {
         assertThat(rucksack.getSecondCompartment()).isEqualTo("34");
     }
 
+    @Test
+    void rucksackMustContainWrongCharacter() {
+        Rucksack rucksack = new Rucksack("123456");
+        assertThatExceptionOfType(IllegalStateException.class)
+                .isThrownBy(() -> rucksack.getWrongItem());
+    }
+
+    @Test
+    void wrongItemIsIdentified() {
+        Rucksack rucksack = new Rucksack("Dabcdxaz");
+        assertThat(rucksack.getWrongItem()).isEqualTo('a');
+    }
+
 }
