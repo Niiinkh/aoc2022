@@ -1,4 +1,4 @@
-package de.aboueldahab.aoc.day03.domain;
+package de.aboueldahab.aoc.day03;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -32,4 +32,9 @@ public class Rucksack {
         }
         throw new IllegalStateException("There must be exactly one wrong element in each rucksack");
     }
+
+    public int getPriority() {
+        return new PriorityCalculator().getPriority(getWrongItem());
+    }
+
 }

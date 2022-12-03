@@ -1,4 +1,4 @@
-package de.aboueldahab.aoc.day03.domain;
+package de.aboueldahab.aoc.day03;
 
 import org.junit.jupiter.api.Test;
 
