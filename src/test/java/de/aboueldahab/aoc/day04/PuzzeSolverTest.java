@@ -22,4 +22,9 @@ class PuzzeSolverTest {
         assertThat(PuzzeSolver.getFullyOverlappingPairs(exampleInput)).isEqualTo(2);
     }
 
+    @Test
+    void exampleInputPart2() {
+        assertThat(PuzzeSolver.getAnyOverlappingPairs(exampleInput)).isEqualTo(4);
+    }
+
 }

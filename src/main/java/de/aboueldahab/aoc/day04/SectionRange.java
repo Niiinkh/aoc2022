@@ -14,6 +14,10 @@ public class SectionRange {
         return this.lowerBound <= other.lowerBound && this.upperBound >= other.upperBound;
     }
 
+    public boolean hasOverlap(SectionRange other) {
+        return !(upperBound < other.lowerBound || lowerBound > other.upperBound);
+    }
+
     public int lowerBound() {
         return lowerBound;
     }

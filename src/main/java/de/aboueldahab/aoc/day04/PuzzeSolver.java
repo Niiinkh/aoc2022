@@ -12,12 +12,20 @@ public class PuzzeSolver {
         System.out.println("Day 4 Solution");
         System.out.println("--------------");
         System.out.println("Part 1 - number of fully overlapping pairs: " + getFullyOverlappingPairs(input));
+        System.out.println("Part 2 - number of all overlapping pairs: " + getAnyOverlappingPairs(input));
     }
 
     public static long getFullyOverlappingPairs(List<String> input) {
         return input.stream()
                 .map(ElfPair::new)
                 .filter(ElfPair::hasFullOverlap)
+                .count();
+    }
+
+    public static long getAnyOverlappingPairs(List<String> input) {
+        return input.stream()
+                .map(ElfPair::new)
+                .filter(ElfPair::hasAnyOverlap)
                 .count();
     }
 }

@@ -15,6 +15,10 @@ public class ElfPair {
         return firstElf.fullyContains(secondElf) || secondElf.fullyContains(firstElf);
     }
 
+    public boolean hasAnyOverlap() {
+        return firstElf.hasOverlap(secondElf);
+    }
+
     public SectionRange firstElf() {
         return firstElf;
     }
