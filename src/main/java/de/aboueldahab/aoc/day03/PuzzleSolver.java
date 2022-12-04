@@ -15,7 +15,6 @@ public class PuzzleSolver {
         System.out.println("--------------");
         System.out.println("Part 1 - sum of priorities: " + getPrioritiesForRucksacks(input));
         System.out.println("Part 2 - sum of priorities: " + getPrioritiesForBadges(input));
-
     }
 
     public static Integer getPrioritiesForRucksacks(List<String> input) {
