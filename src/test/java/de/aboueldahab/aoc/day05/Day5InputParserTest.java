@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class Day5InputParserTest {
 
-    private List<String> exampleInput = Arrays.asList(
+    static List<String> exampleInput = Arrays.asList(
             "    [D]    ",
             "[N] [C]    ",
             "[Z] [M] [P]",
