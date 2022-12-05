@@ -2,7 +2,7 @@ package de.aboueldahab.aoc.day05;
 
 import java.util.Stack;
 
-public class Crate {
+public class CrateStack {
 
     private final Stack<String> stack = new Stack<>();
 

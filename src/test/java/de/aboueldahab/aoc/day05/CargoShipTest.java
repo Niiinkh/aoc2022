@@ -10,48 +10,48 @@ import static org.assertj.core.api.Assertions.assertThat;
 class CargoShipTest {
 
     private CargoShip cargoShip;
-    private Crate crate1;
-    private Crate crate2;
+    private CrateStack stack1;
+    private CrateStack crateStack2;
 
     @BeforeEach
     void setup() {
-        HashMap<Integer, Crate> crates = new HashMap<>();
-        crate1 = new Crate();
-        crate2 = new Crate();
-        crates.put(1, crate1);
-        crates.put(2, crate2);
+        HashMap<Integer, CrateStack> crates = new HashMap<>();
+        stack1 = new CrateStack();
+        crateStack2 = new CrateStack();
+        crates.put(1, stack1);
+        crates.put(2, crateStack2);
         cargoShip = new CargoShip(crates);
     }
 
     @Test
     void testGetterWorksAsExpected() {
-        assertThat(cargoShip.getCrate(1)).isEqualTo(crate1);
+        assertThat(cargoShip.getStack(1)).isEqualTo(stack1);
     }
 
     @Test
     void singleItemGetsMoved() {
-        crate1.push("A");
-        crate1.push("B");
-        crate1.push("C");
+        stack1.push("A");
+        stack1.push("B");
+        stack1.push("C");
 
-        cargoShip.moveItem(1, 2);
+        cargoShip.moveCrate(1, 2);
 
-        assertThat(cargoShip.getCrate(1).getStack()).containsExactly("A", "B");
-        assertThat(cargoShip.getCrate(2).getStack()).containsExactly("C");
+        assertThat(cargoShip.getStack(1).getStack()).containsExactly("A", "B");
+        assertThat(cargoShip.getStack(2).getStack()).containsExactly("C");
     }
 
     @Test
     void craneInstructionsLeadToCorrectRearrangement() {
-        crate1.push("A");
-        crate1.push("B");
-        crate1.push("C");
-        crate1.push("D");
-        crate1.push("E");
+        stack1.push("A");
+        stack1.push("B");
+        stack1.push("C");
+        stack1.push("D");
+        stack1.push("E");
 
-        cargoShip.rearrange(new CraneInstruction("move 3 from 1 to 2"));
+        cargoShip.rearrangeCrates(new CraneInstruction("move 3 from 1 to 2"));
 
-        assertThat(cargoShip.getCrate(1).getStack()).containsExactly("A", "B");
-        assertThat(cargoShip.getCrate(2).getStack()).containsExactly("E", "D", "C");
+        assertThat(cargoShip.getStack(1).getStack()).containsExactly("A", "B");
+        assertThat(cargoShip.getStack(2).getStack()).containsExactly("E", "D", "C");
     }
 
 }

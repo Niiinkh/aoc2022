@@ -4,25 +4,25 @@ import java.util.Map;
 
 public class CargoShip {
 
-    private final Map<Integer, Crate> crates;
+    private final Map<Integer, CrateStack> stack;
 
-    public CargoShip(Map<Integer, Crate> crates) {
-        this.crates = crates;
+    public CargoShip(Map<Integer, CrateStack> stack) {
+        this.stack = stack;
     }
 
-    public Crate getCrate(Integer key) {
-        return crates.get(key);
+    public CrateStack getStack(Integer key) {
+        return stack.get(key);
     }
 
-    public void rearrange(CraneInstruction instruction) {
+    public void rearrangeCrates(CraneInstruction instruction) {
         for (int i = 0; i < instruction.itemCount(); i++) {
-            moveItem(instruction.crateFrom(), instruction.crateTo());
+            moveCrate(instruction.stackFrom(), instruction.stackTo());
         }
     }
 
-    protected void moveItem(Integer from, Integer to) {
-        String item = crates.get(from).pop();
-        crates.get(to).push(item);
+    protected void moveCrate(Integer from, Integer to) {
+        String crate = stack.get(from).pop();
+        stack.get(to).push(crate);
     }
 
 }
