@@ -11,15 +11,15 @@ class CargoShipTest {
 
     private CargoShip cargoShip;
     private CrateStack stack1;
-    private CrateStack crateStack2;
+    private CrateStack stack2;
 
     @BeforeEach
     void setup() {
         HashMap<Integer, CrateStack> crates = new HashMap<>();
         stack1 = new CrateStack();
-        crateStack2 = new CrateStack();
+        stack2 = new CrateStack();
         crates.put(1, stack1);
-        crates.put(2, crateStack2);
+        crates.put(2, stack2);
         cargoShip = new CargoShip(crates);
     }
 
@@ -52,6 +52,13 @@ class CargoShipTest {
 
         assertThat(cargoShip.getStack(1).getStack()).containsExactly("A", "B");
         assertThat(cargoShip.getStack(2).getStack()).containsExactly("E", "D", "C");
+    }
+
+    @Test
+    void topItems() {
+        stack1.push("Z");
+        stack2.push("K");
+        assertThat(cargoShip.getTopCrates()).containsExactly("Z", "K");
     }
 
 }

@@ -1,6 +1,8 @@
 package de.aboueldahab.aoc.day05;
 
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CargoShip {
 
@@ -25,4 +27,7 @@ public class CargoShip {
         stack.get(to).push(crate);
     }
 
+    public List<String> getTopCrates() {
+        return stack.values().stream().map(stack -> stack.peek()).collect(Collectors.toList());
+    }
 }

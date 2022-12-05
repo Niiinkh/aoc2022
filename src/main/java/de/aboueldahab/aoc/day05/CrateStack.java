@@ -18,4 +18,7 @@ public class CrateStack {
         return stack;
     }
 
+    public String peek() {
+        return stack.peek();
+    }
 }
