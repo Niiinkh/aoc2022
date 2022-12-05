@@ -41,17 +41,31 @@ class CargoShipTest {
     }
 
     @Test
-    void craneInstructionsLeadToCorrectRearrangement() {
+    void rearrangementReverseORder() {
         stack1.push("A");
         stack1.push("B");
         stack1.push("C");
         stack1.push("D");
         stack1.push("E");
 
-        cargoShip.rearrangeCrates(new CraneInstruction("move 3 from 1 to 2"));
+        cargoShip.rearrangeReverseOrder(new CraneInstruction("move 3 from 1 to 2"));
 
         assertThat(cargoShip.getStack(1).getStack()).containsExactly("A", "B");
         assertThat(cargoShip.getStack(2).getStack()).containsExactly("E", "D", "C");
+    }
+
+    @Test
+    void rearrangementKeepOrder() {
+        stack1.push("A");
+        stack1.push("B");
+        stack1.push("C");
+        stack1.push("D");
+        stack1.push("E");
+
+        cargoShip.rearrangeKeepOrder(new CraneInstruction("move 3 from 1 to 2"));
+
+        assertThat(cargoShip.getStack(1).getStack()).containsExactly("A", "B");
+        assertThat(cargoShip.getStack(2).getStack()).containsExactly("C", "D", "E");
     }
 
     @Test

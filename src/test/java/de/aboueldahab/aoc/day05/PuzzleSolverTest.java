@@ -19,4 +19,9 @@ class PuzzleSolverTest {
         assertThat(PuzzleSolver.getPart1Solution(input)).isEqualTo("CMZ");
     }
 
+    @Test
+    void exampleInput_part2() {
+        assertThat(PuzzleSolver.getPart2Solution(input)).isEqualTo("MCD");
+    }
+
 }
