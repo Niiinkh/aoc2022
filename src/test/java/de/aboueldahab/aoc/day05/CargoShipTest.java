@@ -32,11 +32,26 @@ class CargoShipTest {
     void singleItemGetsMoved() {
         crate1.push("A");
         crate1.push("B");
+        crate1.push("C");
 
         cargoShip.moveItem(1, 2);
 
-        assertThat(cargoShip.getCrate(1).getStack()).singleElement().isEqualTo("A");
-        assertThat(cargoShip.getCrate(2).getStack()).singleElement().isEqualTo("B");
+        assertThat(cargoShip.getCrate(1).getStack()).containsExactly("A", "B");
+        assertThat(cargoShip.getCrate(2).getStack()).containsExactly("C");
+    }
+
+    @Test
+    void craneInstructionsLeadToCorrectRearrangement() {
+        crate1.push("A");
+        crate1.push("B");
+        crate1.push("C");
+        crate1.push("D");
+        crate1.push("E");
+
+        cargoShip.rearrange(new CraneInstruction("move 3 from 1 to 2"));
+
+        assertThat(cargoShip.getCrate(1).getStack()).containsExactly("A", "B");
+        assertThat(cargoShip.getCrate(2).getStack()).containsExactly("E", "D", "C");
     }
 
 }

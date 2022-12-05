@@ -14,7 +14,13 @@ public class CargoShip {
         return crates.get(key);
     }
 
-    public void moveItem(Integer from, Integer to) {
+    public void rearrange(CraneInstruction instruction) {
+        for (int i = 0; i < instruction.itemCount(); i++) {
+            moveItem(instruction.crateFrom(), instruction.crateTo());
+        }
+    }
+
+    protected void moveItem(Integer from, Integer to) {
         String item = crates.get(from).pop();
         crates.get(to).push(item);
     }
