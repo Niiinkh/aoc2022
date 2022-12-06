@@ -12,9 +12,14 @@ public class PuzzleSolver {
         System.out.println("Day 6 Solution");
         System.out.println("--------------");
         System.out.println("Part 1 - start of packet marker: " + getPart1Solution(input.get(0)));
+        System.out.println("Part 2 - start of message marker: " + getPart2Solution(input.get(0)));
     }
 
-    protected static int getPart1Solution(String input) {
-        return new SignalProcessor().startOfPacketMarker(input);
+    protected static int getPart1Solution(String signal) {
+        return new SignalProcessor().startOfPacketMarker(signal);
+    }
+
+    protected static int getPart2Solution(String signal) {
+        return new SignalProcessor().startOfMessageMarker(signal);
     }
 }
