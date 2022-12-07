@@ -3,7 +3,7 @@ package de.aboueldahab.aoc.day07;
 public class Filesystem {
 
     private final Directory root;
-    private final Directory currentDirectory;
+    private Directory currentDirectory;
 
     public Filesystem() {
         root = new Directory("/");
@@ -16,6 +16,30 @@ public class Filesystem {
 
     public Directory currentDirectory() {
         return currentDirectory;
+    }
+
+    public void resetCurrentDirectory() {
+        currentDirectory = root;
+    }
+
+    public void goUp() {
+        if (currentDirectory == root) {
+            return;
+        }
+        currentDirectory = currentDirectory.parent();
+    }
+
+    public void goTo(String path) {
+        for (Directory subdirectory : currentDirectory.subdirectories()) {
+            if (subdirectory.path().equals(path)) {
+                currentDirectory = subdirectory;
+                return;
+            }
+        }
+    }
+
+    public void execute(Command command) {
+        command.execute(this);
     }
 
 }
