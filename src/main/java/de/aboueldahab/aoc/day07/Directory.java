@@ -10,11 +10,11 @@ public class Directory {
     private Set<Directory> subdirectories = new HashSet<>();
     private Directory parent = null;
 
-    private final String name;
+    private final String path;
     private final List<AocFile> files = new ArrayList<>();
 
-    public Directory(String name) {
-        this.name = name;
+    public Directory(String path) {
+        this.path = path;
     }
 
     public void addFile(AocFile file) {
@@ -41,5 +41,9 @@ public class Directory {
     public void addSubdirectory(Directory directory) {
         subdirectories.add(directory);
         directory.setParent(this);
+    }
+
+    public String path() {
+        return path;
     }
 }
