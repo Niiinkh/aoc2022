@@ -39,4 +39,9 @@ class PuzzleSolverTest {
         assertThat(new PuzzleSolver().getPart1Solution(exampleInput)).isEqualTo(95437);
     }
 
+    @Test
+    void part2_exampleInput() {
+        assertThat(new PuzzleSolver().getPart2Solution(exampleInput)).isEqualTo(24933642);
+    }
+
 }
