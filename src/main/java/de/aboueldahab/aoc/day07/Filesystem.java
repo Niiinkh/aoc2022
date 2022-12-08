@@ -1,5 +1,7 @@
 package de.aboueldahab.aoc.day07;
 
+import de.aboueldahab.aoc.day07.commands.Command;
+
 public class Filesystem {
 
     private final Directory root;
