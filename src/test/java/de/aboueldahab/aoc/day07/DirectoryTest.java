@@ -61,7 +61,7 @@ class DirectoryTest {
         Directory subB = new Directory("subB");
         parent.addSubdirectory(subA);
         parent.addSubdirectory(subB);
-        assertThat(parent.subdirectories()).containsExactlyInAnyOrder(subA, subB);
+        assertThat(parent.subdirectories()).containsExactly(subA, subB);
     }
 
     @Test
@@ -90,4 +90,24 @@ class DirectoryTest {
         subdirectory.addFile(new AocFile("subFile", 500));
         assertThat(directory.filesize()).isEqualTo(60);
     }
+
+    @Test
+    void sizeIsSumOfAllFilesIfNoChildren() {
+        directory.addFile(new AocFile("a", 50));
+        directory.addFile(new AocFile("b", 100));
+        directory.addFile(new AocFile("c", 20));
+        assertThat(directory.size()).isEqualTo(170);
+    }
+
+    @Test
+    void sizeCaresAboutFilesInSubdirectories() {
+        Directory subdirectory = new Directory("sub");
+        directory.addSubdirectory(subdirectory);
+
+        directory.addFile(new AocFile("a", 50));
+        directory.addFile(new AocFile("b", 10));
+        subdirectory.addFile(new AocFile("subFile", 500));
+        assertThat(directory.size()).isEqualTo(560);
+    }
+
 }

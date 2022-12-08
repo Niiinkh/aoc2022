@@ -54,7 +54,7 @@ public class Directory {
     }
 
     public long size() {
-        return 0L;
+        return new TreeSearch().depthFirstDirectories(this).stream().map(Directory::filesize).reduce(Long::sum).orElse(0L);
     }
 
 }
