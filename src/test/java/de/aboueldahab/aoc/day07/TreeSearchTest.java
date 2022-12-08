@@ -32,7 +32,7 @@ class TreeSearchTest {
 
     @Test
     void noChildren_onlyRootDirectory() {
-        List<Directory> directories = treeSearch.depthFirstDirectories(root);
+        List<Directory> directories = treeSearch.depthFirst(root);
         assertThat(directories).containsExactly(root);
     }
 
@@ -40,7 +40,7 @@ class TreeSearchTest {
     void oneLevelOfChildren() {
         root.addSubdirectory(dirA);
         root.addSubdirectory(dirB);
-        List<Directory> directories = treeSearch.depthFirstDirectories(root);
+        List<Directory> directories = treeSearch.depthFirst(root);
         assertThat(directories).containsExactly(root, dirA, dirB);
     }
 
@@ -52,7 +52,7 @@ class TreeSearchTest {
         dirC.addSubdirectory(dirD);
         dirC.addSubdirectory(dirE);
         dirB.addSubdirectory(dirF);
-        List<Directory> directories = treeSearch.depthFirstDirectories(root);
+        List<Directory> directories = treeSearch.depthFirst(root);
         assertThat(directories).containsExactly(root, dirA, dirC, dirD, dirE, dirB, dirF);
     }
 

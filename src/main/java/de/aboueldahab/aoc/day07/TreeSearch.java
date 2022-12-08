@@ -5,7 +5,7 @@ import java.util.List;
 
 public class TreeSearch {
 
-    public List<Directory> depthFirstDirectories(Directory directory) {
+    public List<Directory> depthFirst(Directory directory) {
         List<Directory> directories = new ArrayList<>();
         addAllDirectories(directory, directories);
         return directories;
