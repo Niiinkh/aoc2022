@@ -18,4 +18,8 @@ public class CreateFile implements Command {
     public void execute(Filesystem filesystem) {
         filesystem.currentDirectory().addFile(file);
     }
+
+    public AocFile file() {
+        return file;
+    }
 }

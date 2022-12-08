@@ -15,4 +15,8 @@ public class CreateDirectory implements Command {
     public void execute(Filesystem filesystem) {
         filesystem.currentDirectory().addSubdirectory(new Directory(directoryPath));
     }
+
+    public String path() {
+        return directoryPath;
+    }
 }

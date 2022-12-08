@@ -20,4 +20,8 @@ public class ChangeDirectory implements Command {
             filesystem.goTo(path);
         }
     }
+
+    public String path() {
+        return path;
+    }
 }
