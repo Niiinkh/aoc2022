@@ -90,4 +90,18 @@ class FilesystemTest {
         assertThat(filesystem.currentDirectory()).isEqualTo(root);
     }
 
+    @Test
+    void freeSpaceWithoutFilesIs700000() {
+        assertThat(filesystem.freeSpace()).isEqualTo(70000000);
+    }
+
+    @Test
+    void totalSpaceIsReducedByRoot() {
+        Directory dirA = new Directory("A");
+        filesystem.currentDirectory().addSubdirectory(dirA);
+        dirA.addFile(new AocFile("fileA", 1_000_000));
+        filesystem.root().addFile(new AocFile("fileB", 2_000_000));
+        assertThat(filesystem.freeSpace()).isEqualTo(67000000);
+    }
+
 }

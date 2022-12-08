@@ -5,6 +5,7 @@ import de.aboueldahab.aoc.day07.commands.Command;
 public class Filesystem {
 
     private final Directory root;
+    private static final long SIZE = 70_000_000;
     private Directory currentDirectory;
 
     public Filesystem() {
@@ -42,6 +43,10 @@ public class Filesystem {
 
     public void execute(Command command) {
         command.execute(this);
+    }
+
+    public long freeSpace() {
+        return SIZE - root().size();
     }
 
 }
