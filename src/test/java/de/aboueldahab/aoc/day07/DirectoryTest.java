@@ -71,4 +71,23 @@ class DirectoryTest {
         parent.addSubdirectory(subdirectory);
         assertThat(subdirectory.parent()).isEqualTo(parent);
     }
+
+    @Test
+    void filesizeIsSumOfAllFiles() {
+        directory.addFile(new AocFile("a", 50));
+        directory.addFile(new AocFile("b", 100));
+        directory.addFile(new AocFile("c", 20));
+        assertThat(directory.filesize()).isEqualTo(170);
+    }
+
+    @Test
+    void filesizeDoesntCareAboutFilesInSubdirectories() {
+        Directory subdirectory = new Directory("sub");
+        directory.addSubdirectory(subdirectory);
+
+        directory.addFile(new AocFile("a", 50));
+        directory.addFile(new AocFile("b", 10));
+        subdirectory.addFile(new AocFile("subFile", 500));
+        assertThat(directory.filesize()).isEqualTo(60);
+    }
 }

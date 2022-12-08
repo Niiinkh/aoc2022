@@ -1,13 +1,11 @@
 package de.aboueldahab.aoc.day07;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Directory {
 
-    private Set<Directory> subdirectories = new HashSet<>();
+    private List<Directory> subdirectories = new ArrayList<>();
     private Directory parent = null;
 
     private final String path;
@@ -31,19 +29,32 @@ public class Directory {
 
     public void setParent(Directory directory) {
         parent = directory;
-        parent.subdirectories.add(this);
+        if (!parent.subdirectories.contains(this)) {
+            parent.subdirectories.add(this);
+        }
     }
 
-    public Set<Directory> subdirectories() {
-        return new HashSet<>(subdirectories);
+    public List<Directory> subdirectories() {
+        return new ArrayList<>(subdirectories);
     }
 
     public void addSubdirectory(Directory directory) {
-        subdirectories.add(directory);
+        if (!subdirectories.contains(directory)) {
+            subdirectories.add(directory);
+        }
         directory.setParent(this);
     }
 
     public String path() {
         return path;
     }
+
+    public long filesize() {
+        return files.stream().map(AocFile::size).reduce(Long::sum).orElse(0L);
+    }
+
+    public long size() {
+        return 0L;
+    }
+
 }
