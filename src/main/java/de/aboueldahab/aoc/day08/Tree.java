@@ -76,4 +76,20 @@ public class Tree {
     private boolean isHigherThan(List<Tree> trees) {
         return trees.stream().noneMatch(otherTree -> otherTree.height >= this.height);
     }
+
+    public int scenicScore() {
+        return visibleTrees(treesEast) * visibleTrees(treesWest)
+                * visibleTrees(treesSouth) * visibleTrees(treesNorth);
+    }
+
+    private int visibleTrees(List<Tree> trees) {
+        int count = 0;
+        for (Tree tree : trees) {
+            count++;
+            if (tree.height >= this.height) {
+                break;
+            }
+        }
+        return count;
+    }
 }

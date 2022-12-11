@@ -109,4 +109,68 @@ class TreeTest {
         assertThat(tree.isVisible()).isTrue();
     }
 
+    @Test
+    void scenicScoreIsZeroIfNoTreesToOneSide() {
+        Tree tree = new Tree(5);
+
+        tree.addTreeWest(new Tree(1));
+        tree.addTreeNorth(new Tree(1));
+        tree.addTreeSouth(new Tree(1));
+
+        assertThat(tree.scenicScore()).isEqualTo(0);
+    }
+
+
+    @Test
+    void scenicScoreIsFourToTheEast() {
+        Tree tree = new Tree(5);
+
+        tree.addTreeEast(new Tree(1));
+        tree.addTreeEast(new Tree(1));
+        tree.addTreeEast(new Tree(1));
+        tree.addTreeEast(new Tree(1));
+
+        tree.addTreeWest(new Tree(1));
+        tree.addTreeNorth(new Tree(1));
+        tree.addTreeSouth(new Tree(1));
+
+        assertThat(tree.scenicScore()).isEqualTo(4);
+    }
+
+    @Test
+    void scenicScoreForEachDirectionIsMultiplied() {
+        Tree tree = new Tree(5);
+
+        tree.addTreeEast(new Tree(1));
+        tree.addTreeEast(new Tree(1));
+
+        tree.addTreeWest(new Tree(1));
+        tree.addTreeWest(new Tree(1));
+
+        tree.addTreeNorth(new Tree(1));
+        tree.addTreeNorth(new Tree(1));
+
+        tree.addTreeSouth(new Tree(1));
+
+        assertThat(tree.scenicScore()).isEqualTo(8);
+    }
+
+    @Test
+    void scenicScoreIsCutOffByTallTreesToEachSide() {
+        Tree tree = new Tree(5);
+
+        tree.addTreeEast(new Tree(9));
+        tree.addTreeEast(new Tree(1));
+
+        tree.addTreeWest(new Tree(9));
+        tree.addTreeWest(new Tree(1));
+
+        tree.addTreeNorth(new Tree(1));
+
+        tree.addTreeSouth(new Tree(5));
+        tree.addTreeSouth(new Tree(1));
+
+        assertThat(tree.scenicScore()).isEqualTo(1);
+    }
+
 }
