@@ -21,4 +21,9 @@ class PuzzleSolverTest {
         assertThat(PuzzleSolver.getPart1Solution(input)).isEqualTo(21);
     }
 
+    @Test
+    void part2_exampleInput() {
+        assertThat(PuzzleSolver.getPart2Solution(input)).isEqualTo(8);
+    }
+
 }

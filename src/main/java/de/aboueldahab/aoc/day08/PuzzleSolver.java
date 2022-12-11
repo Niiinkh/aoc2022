@@ -12,10 +12,17 @@ public class PuzzleSolver {
         System.out.println("Day 8 Solution");
         System.out.println("--------------");
         System.out.println("Part 1 - total number of visible trees: " + getPart1Solution(input));
+        System.out.println("Part 2 - tree with highest scenic score: " + getPart2Solution(input));
     }
 
     protected static long getPart1Solution(List<String> input) {
         return createTrees(input).stream().filter(Tree::isVisible).count();
+    }
+
+    protected static long getPart2Solution(List<String> input) {
+        return createTrees(input).stream()
+                .map(Tree::scenicScore)
+                .max(Integer::compareTo).orElse(0);
     }
 
     private static List<Tree> createTrees(List<String> input) {
