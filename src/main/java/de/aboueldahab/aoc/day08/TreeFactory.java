@@ -23,7 +23,9 @@ public class TreeFactory {
         for (Tree[] row : treeArray) {
             for (Tree tree : row) {
                 // trees west
-                tree.setTreesWest(asList(copyOfRange(treeArray[rows], 0, columns)));
+                List<Tree> treesWest = asList(copyOfRange(treeArray[rows], 0, columns));
+                Collections.reverse(treesWest);
+                tree.setTreesWest(treesWest);
                 // trees east
                 if (columns < width) {
                     tree.setTreesEast(asList(copyOfRange(treeArray[rows], columns + 1, width)));
@@ -44,6 +46,7 @@ public class TreeFactory {
         for (int i = 0; i < row; i++) {
             treesNorth.add(trees[i][column]);
         }
+        Collections.reverse(treesNorth);
         return treesNorth;
     }
 
@@ -51,9 +54,7 @@ public class TreeFactory {
         List<Tree> treesSouth = new ArrayList<>();
         int height = trees.length;
         for (int i = row + 1; i < height; i++) {
-            if (i < height) {
-                treesSouth.add(trees[i][column]);
-            }
+            treesSouth.add(trees[i][column]);
         }
         return treesSouth;
     }

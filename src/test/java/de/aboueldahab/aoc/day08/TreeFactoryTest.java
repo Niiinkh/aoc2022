@@ -61,8 +61,8 @@ class TreeFactoryTest {
 
         assertThat(tree1.treesWest()).isEmpty();
         assertThat(tree2.treesWest()).containsExactly(tree1);
-        assertThat(tree3.treesWest()).containsExactly(tree1, tree2);
-        assertThat(tree4.treesWest()).containsExactly(tree1, tree2, tree3);
+        assertThat(tree3.treesWest()).containsExactly(tree2, tree1);
+        assertThat(tree4.treesWest()).containsExactly(tree3, tree2, tree1);
     }
 
     @Test
@@ -93,8 +93,8 @@ class TreeFactoryTest {
 
         assertThat(tree1.treesNorth()).isEmpty();
         assertThat(tree2.treesNorth()).containsExactly(tree1);
-        assertThat(tree3.treesNorth()).containsExactly(tree1, tree2);
-        assertThat(tree4.treesNorth()).containsExactly(tree1, tree2, tree3);
+        assertThat(tree3.treesNorth()).containsExactly(tree2, tree1);
+        assertThat(tree4.treesNorth()).containsExactly(tree3, tree2, tree1);
     }
 
     @Test
