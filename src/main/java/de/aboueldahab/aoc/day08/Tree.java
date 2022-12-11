@@ -28,12 +28,20 @@ public class Tree {
         this.treesWest = treesWest;
     }
 
+    public void addTreeWest(Tree tree) {
+        this.treesWest.add(tree);
+    }
+
     public List<Tree> treesEast() {
         return treesEast;
     }
 
     public void setTreesEast(List<Tree> treesEast) {
         this.treesEast = treesEast;
+    }
+
+    public void addTreeEast(Tree tree) {
+        this.treesEast.add(tree);
     }
 
     public List<Tree> treesNorth() {
@@ -44,11 +52,28 @@ public class Tree {
         this.treesNorth = treesNorth;
     }
 
+    public void addTreeNorth(Tree tree) {
+        this.treesNorth.add(tree);
+    }
+
     public List<Tree> treesSouth() {
         return treesSouth;
     }
 
     public void setTreesSouth(List<Tree> treesSouth) {
         this.treesSouth = treesSouth;
+    }
+
+    public void addTreeSouth(Tree tree) {
+        this.treesSouth.add(tree);
+    }
+
+    public boolean isVisible() {
+        return isHigherThan(treesEast) || isHigherThan(treesWest)
+                || isHigherThan(treesNorth) || isHigherThan(treesSouth);
+    }
+
+    private boolean isHigherThan(List<Tree> trees) {
+        return trees.stream().noneMatch(otherTree -> otherTree.height >= this.height);
     }
 }
