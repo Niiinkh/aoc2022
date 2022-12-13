@@ -32,6 +32,11 @@ public class Coordinates {
         return Coordinates.from(other, -x, -y);
     }
 
+    public double distance(Coordinates other) {
+        Coordinates delta = delta(other);
+        return Math.sqrt(Math.pow(delta.x, 2) + Math.pow(delta.y, 2));
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -56,5 +56,43 @@ class CoordinatesTest {
         assertThat(coordinatesB.delta(coordinatesA)).isEqualTo(Coordinates.of(-2, 6));
     }
 
+    @Test
+    void distanceIsZero() {
+        Coordinates coordinates = Coordinates.of(5, 5);
+        assertThat(coordinates.distance(coordinates)).isEqualTo(0);
+    }
+
+    @Test
+    void distanceOne() {
+        Coordinates coordinatesA = Coordinates.of(5, 5);
+        Coordinates coordinatesB = Coordinates.of(4, 5);
+        assertThat(coordinatesA.distance(coordinatesB)).isEqualTo(1);
+        assertThat(coordinatesB.distance(coordinatesA)).isEqualTo(1);
+    }
+
+    @Test
+    void distanceTwo() {
+        Coordinates coordinatesA = Coordinates.of(5, 5);
+        Coordinates coordinatesB = Coordinates.of(3, 5);
+        assertThat(coordinatesA.distance(coordinatesB)).isEqualTo(2);
+        assertThat(coordinatesB.distance(coordinatesA)).isEqualTo(2);
+    }
+
+    @Test
+    void diagonalDistance() {
+        Coordinates coordinatesA = Coordinates.of(5, 5);
+        Coordinates coordinatesB = Coordinates.of(4, 4);
+        assertThat(coordinatesA.distance(coordinatesB)).isEqualTo(1.4142135623730951);
+        assertThat(coordinatesB.distance(coordinatesA)).isEqualTo(1.4142135623730951);
+    }
+
+    @Test
+    void diagonalDistance2() {
+        Coordinates coordinatesA = Coordinates.of(5, 5);
+        Coordinates coordinatesB = Coordinates.of(4, 3);
+        assertThat(coordinatesA.distance(coordinatesB)).isEqualTo(2.23606797749979);
+        assertThat(coordinatesB.distance(coordinatesA)).isEqualTo(2.23606797749979);
+    }
+
 
 }

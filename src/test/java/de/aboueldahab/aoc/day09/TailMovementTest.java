@@ -47,4 +47,48 @@ class TailMovementTest {
         assertThat(tailMovement.headCoordinates()).isEqualTo(Coordinates.of(-1, 0));
     }
 
+    @Test
+    void headMovingUpOnceTailStaysInPlace() {
+        tailMovement.moveHeadUp();
+        assertThat(tailMovement.headCoordinates()).isEqualTo(Coordinates.of(0, 1));
+        assertThat(tailMovement.tailCoordinates()).isEqualTo(Coordinates.of(0, 0));
+    }
+
+    @Test
+    void headMovingDiagonallyTailStaysInPlace() {
+        tailMovement.moveHeadUp();
+        tailMovement.moveHeadLeft();
+        assertThat(tailMovement.headCoordinates()).isEqualTo(Coordinates.of(-1, 1));
+        assertThat(tailMovement.tailCoordinates()).isEqualTo(Coordinates.of(0, 0));
+    }
+
+    @Test
+    void headMovingUpTwiceForcesTailToFollow() {
+        tailMovement.moveHeadUp();
+        tailMovement.moveHeadUp();
+        assertThat(tailMovement.headCoordinates()).isEqualTo(Coordinates.of(0, 2));
+        assertThat(tailMovement.tailCoordinates()).isEqualTo(Coordinates.of(0, 1));
+    }
+
+    @Test
+    void headMovingLeftTwiceForcesTailToFollow() {
+        tailMovement.moveHeadLeft();
+        tailMovement.moveHeadLeft();
+        assertThat(tailMovement.headCoordinates()).isEqualTo(Coordinates.of(-2, 0));
+        assertThat(tailMovement.tailCoordinates()).isEqualTo(Coordinates.of(-1, 0));
+    }
+
+    @Test
+    void tailMovesDiagonallyInOneStepIfBothXAndYDiffer() {
+        tailMovement.moveHeadRight();
+        tailMovement.moveHeadUp();
+        assertThat(tailMovement.tailCoordinates()).isEqualTo(Coordinates.of(0, 0));
+
+        tailMovement.moveHeadUp();
+        assertThat(tailMovement.headCoordinates()).isEqualTo(Coordinates.of(1, 2));
+        assertThat(tailMovement.tailCoordinates()).isEqualTo(Coordinates.of(1, 1));
+        assertThat(tailMovement.tail().visitedCoordinates())
+                .containsExactlyInAnyOrder(Coordinates.of(0, 0), Coordinates.of(1, 1));
+    }
+
 }
