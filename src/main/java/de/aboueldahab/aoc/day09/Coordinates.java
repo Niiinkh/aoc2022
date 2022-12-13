@@ -28,6 +28,10 @@ public class Coordinates {
         return y;
     }
 
+    public Coordinates delta(Coordinates other) {
+        return Coordinates.from(other, -x, -y);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

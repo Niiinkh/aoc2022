@@ -42,5 +42,19 @@ class CoordinatesTest {
         assertThat(newCoordinates).isEqualTo(Coordinates.of(10, 10));
     }
 
+    @Test
+    void deltaIsZero() {
+        Coordinates coordinates = Coordinates.of(5, 5);
+        assertThat(coordinates.delta(coordinates)).isEqualTo(Coordinates.of(0, 0));
+    }
+
+    @Test
+    void deltaCalculationsDependOnWhoIsCallingWho() {
+        Coordinates coordinatesA = Coordinates.of(5, 5);
+        Coordinates coordinatesB = Coordinates.of(7, -1);
+        assertThat(coordinatesA.delta(coordinatesB)).isEqualTo(Coordinates.of(2, -6));
+        assertThat(coordinatesB.delta(coordinatesA)).isEqualTo(Coordinates.of(-2, 6));
+    }
+
 
 }
