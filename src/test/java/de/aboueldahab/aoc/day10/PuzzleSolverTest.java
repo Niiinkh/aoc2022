@@ -162,5 +162,17 @@ class PuzzleSolverTest {
         assertThat(PuzzleSolver.getPart1Solution(exampleInput)).isEqualTo(13140);
     }
 
+    @Test
+    void exampleInputPart2() {
+        assertThat(PuzzleSolver.getPart2Solution(exampleInput).displayLines()).containsExactly(
+                "##..##..##..##..##..##..##..##..##..##..",
+                "###...###...###...###...###...###...###.",
+                "####....####....####....####....####....",
+                "#####.....#####.....#####.....#####.....",
+                "######......######......######......####",
+                "#######.......#######.......#######....."
+        );
+    }
+
 
 }

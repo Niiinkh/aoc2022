@@ -14,12 +14,20 @@ public class PuzzleSolver {
         System.out.println("Day 10 Solution");
         System.out.println("--------------");
         System.out.println("Part 1 - signal strength during six intervals: " + getPart1Solution(input));
+        System.out.println("Part 2 - image drawn to crt:\n");
+        getPart2Solution(input).print();
     }
 
     protected static long getPart1Solution(List<String> input) {
         Register register = new Register();
         input.forEach(line -> register.execute(opParser.parseInput(line)));
         return register.signalStrength();
+    }
+
+    protected static CrtImage getPart2Solution(List<String> input) {
+        Register register = new Register();
+        input.forEach(line -> register.execute(opParser.parseInput(line)));
+        return register.image();
     }
 
 }
