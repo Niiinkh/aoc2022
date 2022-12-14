@@ -15,28 +15,27 @@ public class PuzzleSolver {
     }
 
     protected static long getPart1Solution(List<String> input) {
-        KnotMovement movement = createTail();
-        input.forEach(line -> execute(movement, line));
-        return movement.tail().visitedCoordinates().size();
+        Knot head = new Knot();
+        Knot tail = new Knot();
+        head.setCoordinates(Coordinates.of(0, 0));
+        head.setFollowingKnot(tail);
+
+        input.forEach(line -> execute(head, line));
+
+        return tail.visitedCoordinates().size();
     }
 
-    private static void execute(KnotMovement movement, String line) {
+    private static void execute(Knot head, String line) {
         String direction = line.split(" ")[0];
         int count = Integer.parseInt(line.split(" ")[1]);
         for (int i = 0; i < count; i++) {
             switch (direction) {
-                case "R" -> movement.moveHeadRight();
-                case "L" -> movement.moveHeadLeft();
-                case "D" -> movement.moveHeadDown();
-                case "U" -> movement.moveHeadUp();
+                case "R" -> head.moveRight();
+                case "L" -> head.moveLeft();
+                case "D" -> head.moveDown();
+                case "U" -> head.moveUp();
             }
         }
-    }
-
-    private static KnotMovement createTail() {
-        Knot knot = new Knot();
-        knot.setCoordinates(Coordinates.of(0, 0));
-        return new KnotMovement(knot);
     }
 
 
