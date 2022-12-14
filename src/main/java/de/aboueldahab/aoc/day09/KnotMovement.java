@@ -1,13 +1,13 @@
 package de.aboueldahab.aoc.day09;
 
-public class TailMovement {
+public class KnotMovement {
 
-    private final Tail tail;
+    private final Knot knot;
     private Coordinates headCoordinates;
 
-    public TailMovement(Tail tail) {
-        this.tail = tail;
-        headCoordinates = tail.currentCoordinates();
+    public KnotMovement(Knot knot) {
+        this.knot = knot;
+        headCoordinates = knot.currentCoordinates();
     }
 
     public Coordinates headCoordinates() {
@@ -15,7 +15,7 @@ public class TailMovement {
     }
 
     public Coordinates tailCoordinates() {
-        return tail.currentCoordinates();
+        return knot.currentCoordinates();
     }
 
     public void moveHeadUp() {
@@ -56,7 +56,7 @@ public class TailMovement {
         xDelta = limitToOne(xDelta);
         yDelta = limitToOne(yDelta);
         Coordinates newCoordinates = Coordinates.from(tailCoordinates(), xDelta, yDelta);
-        tail.setCoordinates(newCoordinates);
+        knot.setCoordinates(newCoordinates);
     }
 
     private int limitToOne(int number) {
@@ -70,7 +70,7 @@ public class TailMovement {
         return Math.abs(headCoordinates.distance(tailCoordinates()));
     }
 
-    public Tail tail() {
-        return tail;
+    public Knot tail() {
+        return knot;
     }
 }

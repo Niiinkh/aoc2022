@@ -3,7 +3,7 @@ package de.aboueldahab.aoc.day09;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Tail {
+public class Knot {
 
     private final Set<Coordinates> visitedCoordinates = new HashSet<>();
     private Coordinates coordinates;

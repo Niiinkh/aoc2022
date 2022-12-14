@@ -15,12 +15,12 @@ public class PuzzleSolver {
     }
 
     protected static long getPart1Solution(List<String> input) {
-        TailMovement movement = createTail();
+        KnotMovement movement = createTail();
         input.forEach(line -> execute(movement, line));
         return movement.tail().visitedCoordinates().size();
     }
 
-    private static void execute(TailMovement movement, String line) {
+    private static void execute(KnotMovement movement, String line) {
         String direction = line.split(" ")[0];
         int count = Integer.parseInt(line.split(" ")[1]);
         for (int i = 0; i < count; i++) {
@@ -33,10 +33,10 @@ public class PuzzleSolver {
         }
     }
 
-    private static TailMovement createTail() {
-        Tail tail = new Tail();
-        tail.setCoordinates(Coordinates.of(0, 0));
-        return new TailMovement(tail);
+    private static KnotMovement createTail() {
+        Knot knot = new Knot();
+        knot.setCoordinates(Coordinates.of(0, 0));
+        return new KnotMovement(knot);
     }
 
 
