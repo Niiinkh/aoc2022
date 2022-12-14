@@ -17,6 +17,9 @@ public class Knot {
     public void setCoordinates(Coordinates coordinates) {
         visitedCoordinates.add(coordinates);
         this.coordinates = coordinates;
+        if (followingKnot != null) {
+            tailMovement.tailFollowsHead();
+        }
     }
 
     public Set<Coordinates> visitedCoordinates() {
@@ -47,8 +50,5 @@ public class Knot {
 
     private void move(int deltaX, int deltaY) {
         setCoordinates(Coordinates.from(currentCoordinates(), deltaX, deltaY));
-        if (followingKnot != null) {
-            tailMovement.tailFollowsHead();
-        }
     }
 }

@@ -24,4 +24,23 @@ class PuzzleSolverTest {
         assertThat(PuzzleSolver.getPart1Solution(input)).isEqualTo(13);
     }
 
+    @Test
+    void part2_exampleInput() {
+        assertThat(PuzzleSolver.getPart2Solution(input)).isEqualTo(1);
+    }
+
+    @Test
+    void part2_largerExample() {
+        List<String> largerInput = Arrays.asList(
+                "R 5",
+                "U 8",
+                "L 8",
+                "D 3",
+                "R 17",
+                "D 10",
+                "L 25",
+                "U 20");
+        assertThat(PuzzleSolver.getPart2Solution(largerInput)).isEqualTo(36);
+    }
+
 }

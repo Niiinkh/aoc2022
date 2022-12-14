@@ -12,17 +12,41 @@ public class PuzzleSolver {
         System.out.println("Day 9 Solution");
         System.out.println("--------------");
         System.out.println("Part 1 - total number of positions the tail visited: " + getPart1Solution(input));
+        System.out.println("Part 2 - total number of positions tail no. 9 visited: " + getPart2Solution(input));
     }
 
     protected static long getPart1Solution(List<String> input) {
         Knot head = new Knot();
-        Knot tail = new Knot();
         head.setCoordinates(Coordinates.of(0, 0));
-        head.setFollowingKnot(tail);
+        Knot tail = addTail(head);
 
         input.forEach(line -> execute(head, line));
 
         return tail.visitedCoordinates().size();
+    }
+
+    protected static long getPart2Solution(List<String> input) {
+        Knot head = new Knot();
+        head.setCoordinates(Coordinates.of(0, 0));
+        Knot tail1 = addTail(head);
+        Knot tail2 = addTail(tail1);
+        Knot tail3 = addTail(tail2);
+        Knot tail4 = addTail(tail3);
+        Knot tail5 = addTail(tail4);
+        Knot tail6 = addTail(tail5);
+        Knot tail7 = addTail(tail6);
+        Knot tail8 = addTail(tail7);
+        Knot tail9 = addTail(tail8);
+
+        input.forEach(line -> execute(head, line));
+
+        return tail9.visitedCoordinates().size();
+    }
+
+    private static Knot addTail(Knot head) {
+        Knot tail = new Knot();
+        head.setFollowingKnot(tail);
+        return tail;
     }
 
     private static void execute(Knot head, String line) {
