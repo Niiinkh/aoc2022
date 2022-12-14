@@ -16,4 +16,8 @@ public class AddValueOp implements Operation {
     public void execute(Register register) {
         register.addValue(value);
     }
+
+    public int value() {
+        return value;
+    }
 }
