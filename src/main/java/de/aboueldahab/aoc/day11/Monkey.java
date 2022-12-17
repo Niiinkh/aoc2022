@@ -12,21 +12,6 @@ public class Monkey {
     private Integer monkeyIdIfTestSucceeds;
     private Integer index;
 
-    public void handleItem(Item item) {
-        operation.executeWithRelief(item);
-        if (behaviour.test(item)) {
-            throwTo(monkeyIdIfTestSucceeds, item);
-        } else {
-            throwTo(monkeyIdIfTestFails, item);
-        }
-    }
-
-    private void throwTo(int monkeyId, Item item) {
-        items.remove(item);
-        // monkey.addItem(item);
-    }
-
-
     public void setItems(List<Item> items) {
         this.items = items;
     }
@@ -77,5 +62,9 @@ public class Monkey {
 
     public Integer monkeyIdIfTestFails() {
         return monkeyIdIfTestFails;
+    }
+
+    public void removeItem(Item item) {
+        items.remove(item);
     }
 }
