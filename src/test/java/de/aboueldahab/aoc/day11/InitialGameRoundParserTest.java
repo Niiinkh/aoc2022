@@ -52,4 +52,16 @@ class InitialGameRoundParserTest {
         assertThat(item.worryLevel()).isEqualTo(38);
     }
 
+    @Test
+    void monkeyKnowsMonkeyToThrowToIfTestSucceeds() {
+        Monkey monkey = gameRoundParser.parseMonkey(monkeyExample);
+        assertThat(monkey.monkeyIdIfTestSucceeds()).isEqualTo(2);
+    }
+
+    @Test
+    void monkeyKnowsMonkeyToThrowToIfTestFails() {
+        Monkey monkey = gameRoundParser.parseMonkey(monkeyExample);
+        assertThat(monkey.monkeyIdIfTestFails()).isEqualTo(3);
+    }
+
 }

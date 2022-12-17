@@ -11,6 +11,8 @@ public class InitialGameRoundParser {
         monkey.setItems(parseItems(input));
         monkey.setBehaviour(parseBehaviour(input));
         monkey.setOperation(parseOperation(input));
+        monkey.setMonkeyIfTestSucceeds(parseMonkeyId(input.get(4)));
+        monkey.setMonkeyIfTestFails(parseMonkeyId(input.get(5)));
         return monkey;
     }
 
@@ -37,6 +39,10 @@ public class InitialGameRoundParser {
 
     private static MonkeyOperation parseOperation(List<String> input) {
         return new MonkeyOperationFactory().createOp(input.get(2));
+    }
+
+    private int parseMonkeyId(String line) {
+        return Integer.parseInt(line.trim().split(" ")[5]);
     }
 
 }

@@ -8,8 +8,8 @@ public class Monkey {
     private List<Item> items = new ArrayList<>();
     private MonkeyBehaviour behaviour;
     private MonkeyOperation operation;
-    private int monkeyIdIfTestFails;
-    private int monkeyIdIfTestSucceeds;
+    private Integer monkeyIdIfTestFails;
+    private Integer monkeyIdIfTestSucceeds;
     private Integer index;
 
     public void handleItem(Item item) {
@@ -69,5 +69,13 @@ public class Monkey {
 
     public MonkeyOperation operation() {
         return operation;
+    }
+
+    public Integer monkeyIdIfTestSucceeds() {
+        return monkeyIdIfTestSucceeds;
+    }
+
+    public Integer monkeyIdIfTestFails() {
+        return monkeyIdIfTestFails;
     }
 }
