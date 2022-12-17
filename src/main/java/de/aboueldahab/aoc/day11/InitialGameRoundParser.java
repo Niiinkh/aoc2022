@@ -5,6 +5,21 @@ import java.util.List;
 
 public class InitialGameRoundParser {
 
+    public List<Monkey> parseAllMonkeys(List<String> exampleInput) {
+        List<Monkey> monkeys = new ArrayList<>();
+        List<String> rawMonkey = new ArrayList<>();
+        for (String line : exampleInput) {
+            if (line.isBlank()) {
+                monkeys.add(parseMonkey(rawMonkey));
+                rawMonkey = new ArrayList<>();
+                continue;
+            }
+            rawMonkey.add(line);
+        }
+        monkeys.add(parseMonkey(rawMonkey));
+        return monkeys;
+    }
+
     public Monkey parseMonkey(List<String> input) {
         Monkey monkey = new Monkey();
         monkey.setIndex(parseIndex(input));

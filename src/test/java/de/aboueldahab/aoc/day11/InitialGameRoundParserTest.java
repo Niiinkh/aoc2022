@@ -64,4 +64,15 @@ class InitialGameRoundParserTest {
         assertThat(monkey.monkeyIdIfTestFails()).isEqualTo(3);
     }
 
+    @Test
+    void allMonkeysFromExampleInputGetParsedInCorrectOrder() {
+        List<Monkey> monkeys = gameRoundParser.parseAllMonkeys(PuzzleSolverTest.exampleInput());
+        assertThat(monkeys).hasSize(4);
+        assertThat(monkeys.get(0).getIndex()).isEqualTo(0);
+        assertThat(monkeys.get(1).getIndex()).isEqualTo(1);
+        assertThat(monkeys.get(2).getIndex()).isEqualTo(2);
+        assertThat(monkeys.get(3).getIndex()).isEqualTo(3);
+
+    }
+
 }
