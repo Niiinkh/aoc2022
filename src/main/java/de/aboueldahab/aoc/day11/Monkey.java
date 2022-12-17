@@ -8,22 +8,22 @@ public class Monkey {
     private List<Item> items = new ArrayList<>();
     private MonkeyBehaviour behaviour;
     private MonkeyOperation operation;
-    private Monkey monkeyIfTestFails;
-    private Monkey monkeyIfTestSucceeds;
+    private int monkeyIdIfTestFails;
+    private int monkeyIdIfTestSucceeds;
     private Integer index;
 
     public void handleItem(Item item) {
         operation.executeWithRelief(item);
         if (behaviour.test(item)) {
-            throwTo(monkeyIfTestSucceeds, item);
+            throwTo(monkeyIdIfTestSucceeds, item);
         } else {
-            throwTo(monkeyIfTestFails, item);
+            throwTo(monkeyIdIfTestFails, item);
         }
     }
 
-    private void throwTo(Monkey monkey, Item item) {
+    private void throwTo(int monkeyId, Item item) {
         items.remove(item);
-        monkey.addItem(item);
+        // monkey.addItem(item);
     }
 
 
@@ -43,12 +43,12 @@ public class Monkey {
         this.operation = operation;
     }
 
-    public void setMonkeyIfTestFails(Monkey monkeyIfTestFails) {
-        this.monkeyIfTestFails = monkeyIfTestFails;
+    public void setMonkeyIfTestFails(int monkeyId) {
+        this.monkeyIdIfTestFails = monkeyId;
     }
 
-    public void setMonkeyIfTestSucceeds(Monkey monkeyIfTestSucceeds) {
-        this.monkeyIfTestSucceeds = monkeyIfTestSucceeds;
+    public void setMonkeyIfTestSucceeds(int monkeyId) {
+        this.monkeyIdIfTestSucceeds = monkeyId;
     }
 
     public List<Item> items() {
