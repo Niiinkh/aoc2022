@@ -12,4 +12,7 @@ public class MonkeyBehaviour {
         return item.worryLevel() % divisibleBy == 0;
     }
 
+    public int divisibleBy() {
+        return divisibleBy;
+    }
 }

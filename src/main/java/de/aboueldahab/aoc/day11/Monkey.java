@@ -10,6 +10,7 @@ public class Monkey {
     private MonkeyOperation operation;
     private Monkey monkeyIfTestFails;
     private Monkey monkeyIfTestSucceeds;
+    private Integer index;
 
     public void handleItem(Item item) {
         operation.executeWithRelief(item);
@@ -52,5 +53,21 @@ public class Monkey {
 
     public List<Item> items() {
         return items;
+    }
+
+    public Integer getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    public MonkeyBehaviour behaviour() {
+        return behaviour;
+    }
+
+    public MonkeyOperation operation() {
+        return operation;
     }
 }
