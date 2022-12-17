@@ -11,6 +11,12 @@ public class GameRound {
         this.monkeys = monkeys;
     }
 
+    public void playTwentyRounds() {
+        for (int i = 0; i < 20; i++) {
+            playOneRound();
+        }
+    }
+
     public void playOneRound() {
         monkeys.forEach(monkey -> {
             monkey.items().forEach(item -> handleItem(monkey, item));
@@ -19,7 +25,7 @@ public class GameRound {
     }
 
     public void handleItem(Monkey monkey, Item item) {
-        monkey.operation().executeWithRelief(item);
+        monkey.inspectItem(item);
         if (monkey.behaviour().test(item)) {
             throwTo(monkey, item, monkey.monkeyIdIfTestSucceeds());
         } else {
@@ -40,4 +46,7 @@ public class GameRound {
                 .findFirst().orElse(null);
     }
 
+    public List<Monkey> getMonkeys() {
+        return monkeys;
+    }
 }

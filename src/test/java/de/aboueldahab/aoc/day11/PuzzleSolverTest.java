@@ -1,7 +1,11 @@
 package de.aboueldahab.aoc.day11;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class PuzzleSolverTest {
 
@@ -33,6 +37,11 @@ public class PuzzleSolverTest {
             "  Test: divisible by 17",
             "    If true: throw to monkey 0",
             "    If false: throw to monkey 1");
+
+    @Test
+    void exampleInputPart1() {
+        assertThat(PuzzleSolver.getPart1Solution(exampleInput())).isEqualTo(10605);
+    }
 
 
     static List<String> exampleInput() {

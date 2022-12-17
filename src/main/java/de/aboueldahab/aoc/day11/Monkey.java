@@ -11,6 +11,7 @@ public class Monkey {
     private Integer monkeyIdIfTestFails;
     private Integer monkeyIdIfTestSucceeds;
     private Integer index;
+    private int activity = 0;
 
     public void setItems(List<Item> items) {
         this.items = items;
@@ -66,5 +67,14 @@ public class Monkey {
 
     public void removeItem(Item item) {
         items.remove(item);
+    }
+
+    public int activity() {
+        return activity;
+    }
+
+    public void inspectItem(Item item) {
+        operation.executeWithRelief(item);
+        activity++;
     }
 }
