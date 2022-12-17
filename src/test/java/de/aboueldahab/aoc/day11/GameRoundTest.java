@@ -46,14 +46,6 @@ class GameRoundTest {
     }
 
     @Test
-    void itemIsRemovedFromMonkeyWhoHasBeenHoldingIt() {
-        Item item = new Item(5);
-        monkey1.addItem(item);
-        gameRound.handleItem(monkey1, item);
-        assertThat(monkey1.items()).isEmpty();
-    }
-
-    @Test
     void itemIsThrownToCorrectMonkeyIfTestSucceeds() {
         Item item = new Item(5);
         monkey1.setBehaviour(alwaysTrueBehaviour);
@@ -73,6 +65,17 @@ class GameRoundTest {
         gameRound.handleItem(monkey1, item);
         assertThat(monkey2.items()).isEmpty();
         assertThat(monkey3.items()).containsExactly(item);
+    }
+
+    @Test
+    void playingOneRoundOnExampleInput() {
+        List<Monkey> exampleInput = new InitialGameRoundParser().parseAllMonkeys(PuzzleSolverTest.exampleInput());
+        GameRound gameRound = new GameRound(exampleInput);
+        gameRound.playOneRound();
+        assertThat(exampleInput.get(0).items()).hasSize(4);
+        assertThat(exampleInput.get(1).items()).hasSize(6);
+        assertThat(exampleInput.get(2).items()).isEmpty();
+        assertThat(exampleInput.get(3).items()).isEmpty();
     }
 
 }

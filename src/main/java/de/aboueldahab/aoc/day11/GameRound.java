@@ -1,5 +1,6 @@
 package de.aboueldahab.aoc.day11;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameRound {
@@ -11,7 +12,10 @@ public class GameRound {
     }
 
     public void playOneRound() {
-
+        monkeys.forEach(monkey -> {
+            monkey.items().forEach(item -> handleItem(monkey, item));
+            monkey.setItems(new ArrayList<>());
+        });
     }
 
     public void handleItem(Monkey monkey, Item item) {
@@ -24,7 +28,6 @@ public class GameRound {
     }
 
     private void throwTo(Monkey currentMonkey, Item item, Integer newMonkeyId) {
-        currentMonkey.removeItem(item);
         Monkey monkeyToThrowTo = monkeyById(newMonkeyId);
         if (monkeyToThrowTo != null) {
             monkeyToThrowTo.addItem(item);
